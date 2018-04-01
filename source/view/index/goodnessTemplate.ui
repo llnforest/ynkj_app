@@ -1,0 +1,11 @@
+{
+	"RootView":{
+		"bgColor":"008C00FF",
+		"textAlign":"center",
+		"fontSize":"22",
+		"id":"do_Label_title",
+		"type":"do_Label",
+		"fontColor":"FFFFFFFF",
+		"height":"40"
+	}
+}

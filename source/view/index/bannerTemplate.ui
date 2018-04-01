@@ -1,0 +1,29 @@
+{
+	"RootView":{
+		"x":"0",
+		"width":"750",
+		"y":"0",
+		"id":"do_ALayout_root",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"width":"750",
+				"id":"do_ImageView_banner",
+				"type":"do_ImageView",
+				"cacheType":"temporary",
+				"height":"380"
+			},
+			{
+				"width":"690",
+				"x":"30",
+				"y":"320",
+				"fontSize":"28",
+				"id":"do_Label_title",
+				"type":"do_Label",
+				"fontColor":"FFFFFFFF",
+				"height":"50"
+			}
+		],
+		"height":"380"
+	}
+}
