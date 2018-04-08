@@ -4,7 +4,41 @@
 		"width":"750",
 		"y":"0",
 		"type":"do_ALayout",
-		"views":[],
+		"views":[
+			{
+				"templates":"source://view/house/searchTemplate.ui",
+				"width":"750",
+				"y":"126",
+				"id":"do_SegmentView_nav",
+				"type":"do_SegmentView"
+			},
+			{
+				"width":"750",
+				"y":"291",
+				"id":"do_LinearLayout_1",
+				"type":"do_LinearLayout",
+				"views":[
+					{
+						"width":"375",
+						"id":"do_Label_1",
+						"type":"do_Label"
+					},
+					{
+						"x":"375",
+						"width":"375",
+						"id":"do_Label_2",
+						"type":"do_Label"
+					},
+					{
+						"x":"750",
+						"id":"do_Label_3",
+						"type":"do_Label"
+					}
+				],
+				"height":"-1",
+				"direction":"horizontal"
+			}
+		],
 		"height":"1334"
 	}
 }

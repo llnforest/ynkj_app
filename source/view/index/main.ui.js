@@ -42,17 +42,14 @@ var jsonHot = [
     {
     	id:1,
     	title:"房产税又降啦！重大利好",
-    	href:"source://view/index/bannerTemplate.ui"
 	},
     {
     	id:2,
     	title:"号外号外，怎样花更少的钱买更好的房子",
-    	href:""
 	},
     {
     	id:3,
     	title:"看一看，瞧一瞧",
-    	href:""
 	}
 ]
 hotData.addData(jsonHot);

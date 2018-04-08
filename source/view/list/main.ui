@@ -11,12 +11,28 @@
 				"type":"do_ALayout",
 				"views":[
 					{
-						"textAlign":"center",
-						"x":"319",
-						"y":"433",
-						"id":"do_Label_1",
-						"text":"通讯录",
-						"type":"do_Label"
+						"templates":"source://view/list/listNavTemplate.ui",
+						"x":"105",
+						"width":"540",
+						"id":"do_SegmentView_nav",
+						"type":"do_SegmentView",
+						"height":"90"
+					},
+					{
+						"bgColor":"008C00FF",
+						"width":"750",
+						"y":"90",
+						"id":"do_ALayout_nav",
+						"type":"do_ALayout",
+						"height":"2"
+					},
+					{
+						"templates":"source://view/list/list.ui",
+						"width":"750",
+						"y":"92",
+						"id":"do_SlideView_list",
+						"type":"do_SlideView",
+						"height":"1020"
 					}
 				],
 				"height":"1112"

@@ -51,9 +51,11 @@ do_ALayout_love.on("touch",function(){
 		do_Label_love.text = "取消关注";
 		do_Label_love.fontColor = "FF0000FF";
 	}else{
+		love_status = 0;
 		do_Notification.toast("取消关注成功");
 		do_ImageView_love.source = "source://image/love.png";
 		do_Label_love.text = "关注";
+		do_Label_love.fontColor = "8A8A8AFF";
 	}
 })
 

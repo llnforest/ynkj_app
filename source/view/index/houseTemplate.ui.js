@@ -27,7 +27,7 @@ do_ALayout_root.on("touch",function(){
 	var url = do_ALayout_root.tag;
 	if(url){
 		do_App.openPage({
-			source:url, 
+			source:"source://view/house/detail.ui", 
 			animationType:"push_r2l", //动画效果：从右向左推出
 			statusBarState:"transparent",
 		});

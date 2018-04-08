@@ -1,0 +1,19 @@
+{
+	"RootView":{
+		"width":"150",
+		"id":"do_ALayout_main",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"textAlign":"center",
+				"width":"150",
+				"fontSize":"25",
+				"id":"do_Label_search",
+				"type":"do_Label",
+				"fontColor":"8A8A8AFF",
+				"height":"50"
+			}
+		],
+		"height":"50"
+	}
+}

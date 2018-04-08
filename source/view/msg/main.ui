@@ -11,12 +11,13 @@
 				"type":"do_ALayout",
 				"views":[
 					{
-						"textAlign":"center",
-						"x":"319",
-						"y":"433",
-						"id":"do_Label_1",
-						"text":"通讯录",
-						"type":"do_Label"
+						"isFooterVisible":"true",
+						"templates":"source://view/msg/msgTemplate.ui",
+						"width":"750",
+						"id":"do_ListView_msg",
+						"type":"do_ListView",
+						"selectedColor":"ECECECFF",
+						"height":"1112"
 					}
 				],
 				"height":"1112"
