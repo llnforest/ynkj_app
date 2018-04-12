@@ -49,13 +49,14 @@ do_SlideView_list.bindItems(slideData);
 
 //在当前页面下订阅SelectOneTab的事件
 do_Page.on("SelectOneTab", function(data){
+	deviceone.print(JSON.stringify(data));
 	var _selectedIndex=-1;
 	for(var i=0; i<navJson.length;i++){
 		if (navJson[i].id == data.id){
 			_selectedIndex =i;
 			navData.updateOne(i, 
 				{
-					id:navJson[i],
+					id:navJson[i].id,
 				    name : navJson[i].name,
 				    selected : 1,
 				    template : navJson[i].template
@@ -65,7 +66,7 @@ do_Page.on("SelectOneTab", function(data){
 		else{
 			navData.updateOne(i, 
 				{
-					id:navJson[i],
+					id:navJson[i].id,
 				    name : navJson[i].name,
 				    selected : 0,
 				    template : navJson[i].template
@@ -73,18 +74,19 @@ do_Page.on("SelectOneTab", function(data){
 			);
 		}
 	}
-
-	//do_SegmentView_tabs重新绑定数据
+	deviceone.print(_selectedIndex);
+	//do_SegmentView_nav重新绑定数据
 	do_SegmentView_nav.refreshItems();
 	//移动当选中的cell上
 	if (_selectedIndex >=0)	{
-		do_SegmentView_tabs.index = _selectedIndex;	
-		do_SlideView_news.index = _selectedIndex;
+		do_SegmentView_nav.index = _selectedIndex;	
+		do_SlideView_list.index = _selectedIndex;
 	}
 });
 
 
-//当do_SlideView_news变化时，同步do_SegmentView_tabs
+//当do_SlideView_list变化时，同步do_SegmentView_nav
 do_SlideView_list.on("indexChanged", function(index) {
-	do_Page.fire("selectOneTab", {id:slideJson[index].id});
+	deviceone.print(index)
+	do_Page.fire("SelectOneTab", {id:slideJson[index].id});
 })

@@ -28,73 +28,53 @@ root.setMapping({
 
 var reserveJson = [
    {
-	   time:"2018年10月1号",
-	   agent:"小陈",
-	   name:"凯旋门小区"
+	   name:"您已预约2018年10月1号和经纪人小陈看房凯旋门小区二手房"
     },
     {
- 	   time:"2018年10月1号",
- 	   agent:"小陈",
- 	   name:"凯旋门小区"
+ 	   name:"您已预约2018年10月1号和经纪人小陈看房凯旋门小区二手房"
      },
      {
-  	   time:"2018年10月1号",
-  	   agent:"小陈",
-  	   name:"凯旋门小区"
+  	   name:"您已预约2018年10月1号和经纪人小陈看房凯旋门小区二手房"
       },
       {
-   	   time:"2018年10月1号",
-   	   agent:"小陈",
-   	   name:"凯旋门小区"
+   	   name:"您已预约2018年10月1号和经纪人小陈看房凯旋门小区二手房"
        },
        {
-    	   time:"2018年10月1号",
-    	   agent:"小陈",
-    	   name:"凯旋门小区"
+    	   name:"您已预约2018年10月1号和经纪人小陈看房凯旋门小区二手房"
         }
     ];
 var recordJson = [
        {
-    	   time:"2018年10月1号",
-    	   name:"凯旋门小区"
+    	   name:"您已于2018年10月1号和经纪人小陈看房民主湖畔小区二手房"
         },
         {
-     	   time:"2018年10月1号",
-     	   name:"凯旋门小区"
+     	   name:"您已于2018年10月1号和经纪人小陈看房民主湖畔小区二手房"
          },
          {
-      	   time:"2018年10月1号",
-      	   name:"凯旋门小区"
+      	   name:"您已于2018年10月1号区二手房"
           },
           {
-       	   time:"2018年10月1号",
-       	   name:"凯旋门小区"
+       	   name:"您已于2018年10月1号和经纪人小陈看房民主湖畔小区二手房"
            },
            {
-        	   time:"2018年10月1号",
-        	   name:"凯旋门小区"
+        	   name:"您已于2018年10月1号小区二手房"
             }
         ];
 var noticeJson = [
        {
-    	   time:"2018年10月1号",
-    	   name:"凯旋门小区"
+    	   name:"您已于2018年10月1号关注凯旋门小区二手房"
         },
         {
-     	   time:"2018年10月1号",
-     	   name:"凯旋门小区"
+     	   name:"您已于2018年10月1号关注凯旋门小区二手房"
          },
          {
-      	   time:"2018年10月1号",
-      	   name:"凯旋门小区"
+      	   name:"您已于2018年10月1号关注凯旋门小区二手房"
           },
           {
-       	   time:"2018年10月1号",
-       	   name:"凯旋门小区"
+       	   name:"您已于2018年10月1号关注凯旋门小区二手房"
            },
            {
-        	   time:"2018年10月1号",
-        	   name:"凯旋门小区"
+        	   name:"您已于2018年10月1号关注凯旋门小区二手房"
             }
         ];
 //给do_ListView_list绑定数据
@@ -122,10 +102,11 @@ function getNextPageData(){
 //订阅每次绑定数据后的事件
 root.on("dataRefreshed", function(){
 	type_id= do_ALayout_root.tag;
-	
+	deviceone.print("refresh");
 	//先尝试加载本地数据
 	var data= do_DataCache.loadData(type_id);
 	if (data != null && data.length > 0){
+		deviceone.print("cache"+type_id);
 		listData.removeAll();
 		listData.addData(data);
 		//do_ListView_list刷新显示

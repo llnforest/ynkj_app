@@ -3,25 +3,128 @@
 		"x":"0",
 		"width":"750",
 		"y":"0",
+		"id":"do_ALayout_root",
 		"type":"do_ALayout",
 		"views":[
 			{
-				"width":"750",
-				"id":"do_ALayout_main",
-				"type":"do_ALayout",
+				"width":"200",
+				"x":"275",
+				"y":"100",
+				"id":"do_LinearLayout_top",
+				"type":"do_LinearLayout",
 				"views":[
 					{
+						"border":"00000000,0,[50,50,50,50]",
+						"width":"200",
+						"id":"do_ImageView_1",
+						"source":"source://image/head_url.png",
+						"type":"do_ImageView",
+						"height":"200"
+					},
+					{
 						"textAlign":"center",
-						"x":"319",
-						"y":"433",
-						"id":"do_Label_1",
-						"text":"通讯录",
-						"type":"do_Label"
+						"width":"200",
+						"y":"200",
+						"fontSize":"30",
+						"id":"do_Label_2",
+						"text":"13585788049",
+						"type":"do_Label",
+						"fontColor":"008C00FF"
 					}
 				],
-				"height":"1112"
+				"height":"-1"
+			},
+			{
+				"width":"750",
+				"y":"500",
+				"id":"do_LinearLayout_bot",
+				"type":"do_LinearLayout",
+				"views":[
+					{
+						"bgColor":"8A8A8AFF",
+						"width":"750",
+						"id":"do_ALayout_line1",
+						"type":"do_ALayout",
+						"height":"1"
+					},
+					{
+						"width":"750",
+						"y":"1",
+						"id":"do_ALayout_request",
+						"type":"do_ALayout",
+						"views":[
+							{
+								"width":"600",
+								"x":"20",
+								"fontSize":"32",
+								"id":"do_Label_3",
+								"text":"需求发布",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"120"
+							},
+							{
+								"x":"680",
+								"width":"50",
+								"y":"35",
+								"id":"do_ImageView_2",
+								"source":"source://image/base_right.png",
+								"type":"do_ImageView",
+								"height":"50"
+							}
+						],
+						"height":"120"
+					},
+					{
+						"bgColor":"8A8A8AFF",
+						"width":"750",
+						"y":"121",
+						"id":"do_ALayout_line2",
+						"type":"do_ALayout",
+						"height":"1"
+					},
+					{
+						"width":"750",
+						"y":"122",
+						"id":"do_ALayout_contact",
+						"type":"do_ALayout",
+						"views":[
+							{
+								"x":"20",
+								"width":"500",
+								"fontSize":"32",
+								"id":"do_Label_4",
+								"text":"联系客服",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"120"
+							},
+							{
+								"textAlign":"right",
+								"width":"200",
+								"x":"520",
+								"fontSize":"22",
+								"id":"do_Label_5",
+								"text":"10109666",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"120"
+							}
+						],
+						"height":"120"
+					},
+					{
+						"bgColor":"8A8A8AFF",
+						"width":"750",
+						"y":"242",
+						"id":"do_ALayout_line3",
+						"type":"do_ALayout",
+						"height":"1"
+					}
+				],
+				"height":"-1"
 			}
 		],
-		"height":"1334"
+		"height":"1112"
 	}
 }

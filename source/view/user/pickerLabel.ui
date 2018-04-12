@@ -1,0 +1,22 @@
+{
+	"RootView":{
+		"bgColor":"EEEEEEFF",
+		"width":"750",
+		"y":"834",
+		"id":"do_ALayout_root",
+		"type":"do_ALayout",
+		"views":[
+			{
+				"bgColor":"5A5A5AFF",
+				"selectedFontColor":"008C00FF",
+				"width":"750",
+				"fontSize":"40",
+				"id":"do_Picker_label",
+				"type":"do_Picker",
+				"fontColor":"CCCCCCFF",
+				"height":"500"
+			}
+		],
+		"height":"500"
+	}
+}
