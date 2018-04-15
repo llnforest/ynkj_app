@@ -69,8 +69,6 @@
 									},
 									{
 										"margin":"20,20,20,20",
-										"type":"do_Label",
-										"fontStyle":"bold",
 										"maxHeight":"75",
 										"width":"710",
 										"x":"20",
@@ -78,7 +76,8 @@
 										"maxLines":"2",
 										"fontSize":"32",
 										"id":"do_Label_4",
-										"text":"保利国际大三房仅售150万",
+										"type":"do_Label",
+										"fontStyle":"bold",
 										"height":"-1",
 										"maxWidth":"750"
 									},
@@ -150,11 +149,37 @@
 												"x":"70",
 												"width":"185",
 												"y":"40",
-												"fontSize":"35",
-												"id":"do_Label_22",
-												"text":"150万",
-												"type":"do_Label",
-												"fontColor":"FF0000FF",
+												"id":"do_ALayout_11",
+												"type":"do_ALayout",
+												"views":[
+													{
+														"width":"185",
+														"id":"do_LinearLayout_12",
+														"type":"do_LinearLayout",
+														"views":[
+															{
+																"width":"-1",
+																"fontSize":"35",
+																"id":"do_Label_39",
+																"type":"do_Label",
+																"fontColor":"FF0000FF",
+																"height":"40"
+															},
+															{
+																"width":"-1",
+																"x":"-1",
+																"fontSize":"35",
+																"id":"do_Label_22",
+																"text":"万",
+																"type":"do_Label",
+																"fontColor":"FF0000FF",
+																"height":"40"
+															}
+														],
+														"height":"40",
+														"direction":"horizontal"
+													}
+												],
 												"height":"40"
 											},
 											{
@@ -169,14 +194,40 @@
 												"height":"40"
 											},
 											{
-												"width":"185",
 												"x":"542",
+												"width":"185",
 												"y":"40",
-												"fontSize":"35",
-												"id":"do_Label_24",
-												"text":"110平米",
-												"type":"do_Label",
-												"fontColor":"FF0000FF",
+												"id":"do_ALayout_12",
+												"type":"do_ALayout",
+												"views":[
+													{
+														"width":"185",
+														"id":"do_LinearLayout_13",
+														"type":"do_LinearLayout",
+														"views":[
+															{
+																"width":"-1",
+																"fontSize":"35",
+																"id":"do_Label_40",
+																"type":"do_Label",
+																"fontColor":"FF0000FF",
+																"height":"40"
+															},
+															{
+																"width":"-1",
+																"x":"-1",
+																"fontSize":"35",
+																"id":"do_Label_24",
+																"text":"平米",
+																"type":"do_Label",
+																"fontColor":"FF0000FF",
+																"height":"40"
+															}
+														],
+														"height":"40",
+														"direction":"horizontal"
+													}
+												],
 												"height":"40"
 											}
 										],
@@ -208,11 +259,28 @@
 													{
 														"x":"100",
 														"width":"200",
-														"fontSize":"28",
-														"id":"do_Label_30",
-														"text":"14000元/平",
-														"type":"do_Label",
-														"height":"44"
+														"id":"do_LinearLayout_11",
+														"type":"do_LinearLayout",
+														"views":[
+															{
+																"width":"-1",
+																"fontSize":"28",
+																"id":"do_Label_38",
+																"type":"do_Label",
+																"height":"44"
+															},
+															{
+																"width":"-1",
+																"x":"-1",
+																"fontSize":"28",
+																"id":"do_Label_30",
+																"text":"元/平",
+																"type":"do_Label",
+																"height":"44"
+															}
+														],
+														"height":"44",
+														"direction":"horizontal"
 													},
 													{
 														"textAlign":"right",
@@ -229,7 +297,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_28",
-														"text":"2007.12.12",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -259,7 +326,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_9",
-														"text":"南北",
 														"type":"do_Label",
 														"height":"44"
 													},
@@ -278,7 +344,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_26",
-														"text":"10/28楼",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -308,7 +373,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_34",
-														"text":"板楼",
 														"type":"do_Label",
 														"height":"44"
 													},
@@ -327,7 +391,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_32",
-														"text":"有",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -357,7 +420,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_10",
-														"text":"精装修",
 														"type":"do_Label",
 														"height":"44"
 													},
@@ -376,7 +438,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_8",
-														"text":"2011",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -406,7 +467,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_18",
-														"text":"普通住宅",
 														"type":"do_Label",
 														"height":"44"
 													},
@@ -425,7 +485,6 @@
 														"width":"200",
 														"fontSize":"28",
 														"id":"do_Label_16",
-														"text":"商品房",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -455,7 +514,6 @@
 														"width":"500",
 														"fontSize":"28",
 														"id":"do_Label_15",
-														"text":"首付31万，月供5000元",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -485,7 +543,6 @@
 														"width":"500",
 														"fontSize":"28",
 														"id":"do_Label_12",
-														"text":"保利春天小区",
 														"type":"do_Label",
 														"height":"44"
 													}
@@ -549,7 +606,6 @@
 										"maxLines":"-1",
 										"fontSize":"28",
 										"id":"do_Label_21",
-										"text":"该小区近地铁口交通便利，text\ttext\ttext\ttext\ttext\t是个好text\t该小区近地铁口交通便利，text\ttext\ttext\ttext\ttext\t是个好地方text\t该小区近地铁口交通便利，text\ttext\ttext\ttext\ttext\t是个好地方text\t该小区近地铁口交通便利，text\ttext\ttext\ttext\ttext\t是个好地方地方",
 										"type":"do_Label",
 										"fontColor":"8A8A8AFF",
 										"height":"-1"

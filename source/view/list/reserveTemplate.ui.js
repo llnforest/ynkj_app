@@ -18,7 +18,7 @@ root.setMapping({
 //点击触发
 do_ALayout_root.on("touch",function(){
 	do_App.openPage({
-		source:"source://view/house/detail.ui", 
+		source:"source://view/house/house.ui", 
 		animationType:"push_r2l", //动画效果：从右向左推出
 		statusBarState:"transparent",
 	});

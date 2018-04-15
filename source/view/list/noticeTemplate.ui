@@ -9,7 +9,7 @@
 			{
 				"bgColor":"8A8A8AFF",
 				"width":"750",
-				"y":"110",
+				"y":"130",
 				"id":"do_ALayout_1",
 				"type":"do_ALayout",
 				"height":"1"
@@ -17,7 +17,7 @@
 			{
 				"width":"50",
 				"x":"20",
-				"y":"25",
+				"y":"35",
 				"id":"do_ImageView_left",
 				"source":"source://image/notice_2.png",
 				"type":"do_ImageView",
@@ -33,19 +33,18 @@
 				"fontSize":"25",
 				"id":"do_Label_title",
 				"type":"do_Label",
-				"fontColor":"8A8A8AFF",
-				"height":"60"
+				"fontColor":"8A8A8AFF"
 			},
 			{
 				"width":"50",
 				"x":"680",
-				"y":"25",
+				"y":"35",
 				"id":"do_ImageView_right",
 				"source":"source://image/base_right.png",
 				"type":"do_ImageView",
 				"height":"50"
 			}
 		],
-		"height":"111"
+		"height":"131"
 	}
 }

@@ -7,6 +7,12 @@ var do_Notification = sm("do_Notification");
 var do_Global = sm("do_Global");
 var do_Page = sm("do_Page");
 var do_App = sm("do_App");
+var do_Storage = sm("do_Storage");
+var isExist = do_Storage.fileExist("data://file/token.txt");
+do_Storage.writeFile("data://file/token.txt",'abc123');
+do_Storage.readFile("data://file/token.txt",function(d){
+	deviceone.print(d);
+});
 
 //声明UI变量
 var do_TextField_code = ui("do_TextField_code");

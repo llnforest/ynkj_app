@@ -9,6 +9,8 @@ var do_Notification = sm("do_Notification");
 var do_Global = sm("do_Global");
 var do_App = sm("do_App");
 var do_Page = sm("do_Page");
+var common = require("common");
+var httpsData = {url:'index/index',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
 
 //声明变量
 var do_SlideView_banner = ui("do_SlideView_banner");
@@ -17,184 +19,64 @@ var do_VerticalSlideView_hot = ui("do_VerticalSlideView_hot");
 var do_GridView_alltype = ui("do_GridView_alltype");
 var do_ListView_house = ui("do_ListView_house");
 
+var hot_index = 0;
+var hot_max = 1;
+
+
+
+common.sendPost(httpsData,{},function(data) {
+	//顶部banner刷新
+	bannerData.addData(data.top);
+	do_SlideView_banner.refreshItems();
+	//顶部banner刷新
+	hotData.addData(data.notice);
+	do_VerticalSlideView_hot.refreshItems();
+	hot_max = data.notice.length;//最大长度
+	//标签列表
+	labelData.addData(data.label);
+	do_GridView_alltype.refreshItems();
+	//中部banner
+	centerData.addData(data.center);
+	do_GridView_image.refreshItems();
+	//房型列表
+	houseData.addData(data.house);
+	do_ListView_house.refreshItems();
+	do_ListView_house.height = data.house.length * 221;
+	do_ListView_house.redraw();
+	
+});
 
 //banner 图
 var bannerData = mm("do_ListData");
-var jsonBanner = [
-  {
-  	id:1,
-  	url:"source://image/banner2.jpg",
-  	title:"大房出售，品质保证",
-  	href:"source://view/index/bannerTemplate.ui"
-	},
-  {
-  	id:2,
-  	url:"source://image/banner2.jpg",
-  	title:"",
-  	href:""
-	}
-]
-bannerData.addData(jsonBanner);
 
-//热点滚动
+//热点滚动（定时器）
 var hotData = mm("do_ListData");
-var jsonHot = [
-    {
-    	id:1,
-    	title:"房产税又降啦！重大利好",
-	},
-    {
-    	id:2,
-    	title:"号外号外，怎样花更少的钱买更好的房子",
-	},
-    {
-    	id:3,
-    	title:"看一看，瞧一瞧",
-	}
-]
-hotData.addData(jsonHot);
-var hot_max = jsonHot.length;
-var hot_index = 0;
 var hot_timer = mm("do_Timer");
-hot_timer.delay = 3000;
+hot_timer.delay = 1000;
 hot_timer.interval = 3000;
 hot_timer.on("tick",function(){
-	hot_index ++;
 	do_VerticalSlideView_hot.index = hot_index;
 	if(hot_index == hot_max - 1) hot_index = 0;
+	else hot_index ++;
 })
 hot_timer.start();
 
-//类型列表
-var typesData = mm("do_ListData");
-var jsontypes = [
-  {
-  	id:1,
-  	url:"source://image/house_type.png",
-  	title:"商品房",
-  	href:"source://view/index/bannerTemplate.ui"
-	},
-  {
-  	id:2,
-  	url:"source://image/house_type.png",
-  	title:"商品房",
-  	href:""
-	},
-	{
-  	id:3,
-  	url:"source://image/house_type.png",
-  	title:"商品房",
-  	href:"source://view/index/bannerTemplate.ui"
-	},
-  {
-  	id:4,
-  	url:"source://image/house_type.png",
-  	title:"商品房",
-  	href:""
-	},
-	{
-		id:5,
-		url:"source://image/house_type.png",
-		title:"商品房",
-		href:""
-	}
-];
-typesData.addData(jsontypes);
+//标签列表
+var labelData = mm("do_ListData");
 
 
 //首页中部列图
-var ImageData = mm("do_ListData");
-var jsonImage = [
-    {
-    	id:1,
-    	url:"source://image/index_banner1.png",
-    	title:"商品房",
-    	href:"source://view/index/bannerTemplate.ui"
-	},
-    {
-    	id:2,
-    	url:"source://image/index_banner1.png",
-    	title:"商品房",
-    	href:""
-	},
-	{
-    	id:3,
-    	url:"source://image/index_banner1.png",
-    	title:"商品房",
-    	href:"source://view/index/bannerTemplate.ui"
-	},
-    {
-    	id:4,
-    	url:"source://image/index_banner1.png",
-    	title:"商品房",
-    	href:""
-	}
-];
-ImageData.addData(jsonImage);
+var centerData = mm("do_ListData");
 
 //底部猜你喜欢
 var houseData = mm("do_ListData");
-var jsonHouse = [
-    {
-	  	id:1,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"免税",id:1,color:"008a00ff"},{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-	  	id:2,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"免税",id:1,color:"008a00ff"},{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-	  	id:3,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-	  	id:4,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"免税",id:1,color:"008a00ff"},{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-		id:5,
-		desc:"两室一厅/100平/南北通透/铜冠花园",
-		goodness:[{name:"免税",id:1,color:"008a00ff"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	}
-];
-do_ListView_house.height = jsonHouse.length * 201;
-houseData.addData(jsonHouse);
 
 //页面加载完成渲染
 do_Page.on("loaded",function(){
 	do_SlideView_banner.bindItems(bannerData);
 	do_VerticalSlideView_hot.bindItems(hotData);
-	do_GridView_alltype.bindItems(typesData);
-	do_GridView_image.bindItems(ImageData);
+	do_GridView_alltype.bindItems(labelData);
+	do_GridView_image.bindItems(centerData);
 	do_ListView_house.bindItems(houseData);
 	do_ListView_house.refreshItems();
 })

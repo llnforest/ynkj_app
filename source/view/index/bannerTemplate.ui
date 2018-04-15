@@ -14,6 +14,14 @@
 				"height":"380"
 			},
 			{
+				"bgColor":"00000044",
+				"width":"750",
+				"y":"310",
+				"id":"do_ALayout_shadow",
+				"type":"do_ALayout",
+				"height":"70"
+			},
+			{
 				"width":"690",
 				"x":"30",
 				"y":"320",

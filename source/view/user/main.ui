@@ -16,7 +16,7 @@
 					{
 						"border":"00000000,0,[50,50,50,50]",
 						"width":"200",
-						"id":"do_ImageView_1",
+						"id":"do_ImageView_head",
 						"source":"source://image/head_url.png",
 						"type":"do_ImageView",
 						"height":"200"

@@ -9,14 +9,14 @@
 			{
 				"bgColor":"8A8A8AFF",
 				"width":"710",
-				"y":"200",
+				"y":"220",
 				"id":"do_ALayout_1",
 				"type":"do_ALayout",
 				"height":"1"
 			},
 			{
 				"width":"200",
-				"y":"20",
+				"y":"30",
 				"id":"do_ImageView_image",
 				"type":"do_ImageView",
 				"height":"160"
@@ -29,41 +29,107 @@
 				"type":"do_LinearLayout",
 				"views":[
 					{
+						"maxHeight":"60",
 						"width":"490",
 						"maxLines":"2",
 						"fontSize":"25",
 						"id":"do_Label_title",
 						"type":"do_Label",
 						"fontStyle":"bold",
-						"height":"-1",
+						"height":"60",
 						"maxWidth":"60"
 					},
 					{
 						"width":"490",
-						"y":"-1",
-						"fontSize":"22",
-						"id":"do_Label_desc",
-						"type":"do_Label",
-						"fontColor":"8A8A8AFF",
-						"height":"30"
+						"y":"60",
+						"id":"do_LinearLayout_3",
+						"type":"do_LinearLayout",
+						"views":[
+							{
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_fangxing",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							},
+							{
+								"x":"-1",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_fangxinglabel",
+								"text":"/",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							},
+							{
+								"x":"-2",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_mianji",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							},
+							{
+								"x":"-3",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_mianjilabel",
+								"text":"平/",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							},
+							{
+								"x":"-4",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_chaoxiang",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							},
+							{
+								"x":"-5",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_chaoxianglabel",
+								"text":"/",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							},
+							{
+								"x":"-6",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_xiaoqu",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"30"
+							}
+						],
+						"height":"30",
+						"direction":"horizontal"
 					},
 					{
 						"templates":"source://view/index/goodnessTemplate.ui",
 						"width":"490",
-						"y":"29",
+						"y":"90",
 						"id":"do_GridView_goodness",
 						"type":"do_GridView",
-						"numColumns":"-1",
+						"numColumns":"4",
 						"height":"40"
 					},
 					{
 						"width":"490",
-						"y":"69",
+						"y":"130",
 						"id":"do_LinearLayout_2",
 						"type":"do_LinearLayout",
 						"views":[
 							{
-								"margin":"0,10,0,0",
 								"width":"-1",
 								"fontSize":"28",
 								"id":"do_Label_price",
@@ -72,10 +138,31 @@
 								"height":"40"
 							},
 							{
+								"margin":"0,10,0,0",
+								"x":"-1",
 								"width":"-1",
-								"x":"9",
+								"fontSize":"28",
+								"id":"do_Label_8",
+								"text":"万元",
+								"type":"do_Label",
+								"fontColor":"FF0000FF",
+								"height":"40"
+							},
+							{
+								"width":"-1",
+								"x":"8",
 								"fontSize":"22",
 								"id":"do_Label_avg_price",
+								"type":"do_Label",
+								"fontColor":"8A8A8AFF",
+								"height":"40"
+							},
+							{
+								"x":"7",
+								"width":"-1",
+								"fontSize":"22",
+								"id":"do_Label_9",
+								"text":"元/平米",
 								"type":"do_Label",
 								"fontColor":"8A8A8AFF",
 								"height":"40"
@@ -88,6 +175,6 @@
 				"height":"-1"
 			}
 		],
-		"height":"201"
+		"height":"221"
 	}
 }

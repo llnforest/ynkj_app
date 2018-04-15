@@ -20,28 +20,30 @@ var navJson = [
 	  	id:1,
 	  	name:"预约记录",
 	  	selected:1,
-	  	template:"source://view/list/reserveTemplate.ui",
+	  	templates:"source://view/list/reserveTemplate.ui"
 	},
 	{
 	  	id:2,
 	  	name:"看房记录",
 	  	selected:0,
-	  	template:"source://view/list/recordTemplate.ui",
+	  	templates:"source://view/list/recordTemplate.ui"
 	},
 	{
 	  	id:3,
 	  	name:"我的关注",
 	  	selected:0,
-	  	template:"source://view/list/noticeTemplate.ui",
-	},
+	  	templates:"source://view/list/noticeTemplate.ui"
+	}
 	
 ];
-var slideJson = navJson;
 
 var navData = mm("do_ListData");
-navData.addData(navJson);
 do_SegmentView_nav.bindItems(navData);
-
+navData.addData(navJson);
+deviceone.print(JSON.stringify(navJson));
+deviceone.print(JSON.stringify(navData));
+do_SegmentView_nav.refreshItems();
+deviceone.print('ok');
 var slideJson = navJson;
 var slideData = mm("do_ListData");
 slideData.addData(slideJson);
@@ -59,7 +61,7 @@ do_Page.on("SelectOneTab", function(data){
 					id:navJson[i].id,
 				    name : navJson[i].name,
 				    selected : 1,
-				    template : navJson[i].template
+				    templates : navJson[i].templates
 				}
 			);
 		}
@@ -69,7 +71,7 @@ do_Page.on("SelectOneTab", function(data){
 					id:navJson[i].id,
 				    name : navJson[i].name,
 				    selected : 0,
-				    template : navJson[i].template
+				    templates : navJson[i].templates
 				}
 			);
 		}
@@ -90,3 +92,4 @@ do_SlideView_list.on("indexChanged", function(index) {
 	deviceone.print(index)
 	do_Page.fire("SelectOneTab", {id:slideJson[index].id});
 })
+
