@@ -7,6 +7,7 @@ var do_Notification = sm("do_Notification");
 var do_Global = sm("do_Global");
 var do_Page = sm("do_Page");
 var do_App = sm("do_App");
+var common = require('common');
 
 //生命UI变量
 var do_ALayout_root = ui("do_ALayout_root");
@@ -123,19 +124,4 @@ do_ViewShower_main.addViews(viewShower_data);
 do_ViewShower_main.showView("index");
 
 //订阅android 系统返回键事件，3秒内连续点两次退出
-var canBack = false;
-var delayOut = mm("do_Timer");
-delayOut.delay = 3000;
-delayOut.on("tick",function(){
-	delayOut.stop();
-	canBack = false;
-})
-do_Page.on("back",function(){
-	if(canBack){
-		do_Global.exit();
-	}else{
-		do_Notification.toast("再次点击退出应用");
-		canBack = true;
-		delayOut.start();
-	}
-})
+common.systemBack(do_Page,mm("do_Timer"),do_Global,do_Notification);

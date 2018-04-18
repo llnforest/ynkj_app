@@ -14,44 +14,28 @@ var do_ALayout_root = ui("do_ALayout_root");
 var do_ALayout_back = ui("do_ALayout_back");
 
 var do_ALayout_phone = ui("do_ALayout_phone");
-var do_ALayout_reserve = ui("do_ALayout_reserve");
-var do_ALayout_love = ui("do_ALayout_love");
-var do_ImageView_love = ui("do_ImageView_love");
-var do_Label_love = ui("do_Label_love");
+var do_Label_title = ui("do_Label_title");
+var do_Label_content = ui("do_Label_content");
+var do_ImageView_banner = ui("do_ImageView_banner");
+var do_ImageView_huxing = ui("do_ImageView_huxing");
 
-var reserve_status = 0;
-var love_status = 0;
+var param = do_Page.getData();
+var common = require("common");
+deviceone.print(param.id);
+var httpsData = {url:'msg/detail',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
 
-//关注、取消关注
-do_ALayout_love.on("touch",function(){
-	if(love_status == 0){
-		love_status = 1;
-		do_Notification.toast("关注成功");
-		do_ImageView_love.source = "source://image/love_active.png";
-		do_Label_love.text = "取消关注";
-		do_Label_love.fontColor = "FF0000FF";
-	}else{
-		love_status = 0;
-		do_Notification.toast("取消关注成功");
-		do_ImageView_love.source = "source://image/love.png";
-		do_Label_love.text = "关注";
-		do_Label_love.fontColor = "8A8A8AFF";
-	}
-})
-
-//预约看房
-do_ALayout_reserve.on("touch",function(){
-	if(reserve_status == 0){
-		reserve_status = 1;
-		do_Notification.toast("提交预约申请成功，请等待经纪人安排");
-	}else{
-		do_Notification.toast("您已提交预约申请，请等待经纪人安排");
-	}
-})
+//拉取数据
+common.sendPost(httpsData,{id:param.id},function(data) {
+	do_Label_title.text = data.detail.title;
+	do_Label_content.text = data.detail.content;
+	do_ALayout_phone.tag = data.detail.phone
+	do_ImageView_banner.source = data.detail.banner_url;
+	do_ImageView_huxing.source = data.detail.house_url;
+});
 
 //拨打电话
 do_ALayout_phone.on("touch",function(){
-	do_External.openDial("13585788049");
+	do_External.openDial(do_ALayout_phone.tag);
 })
 
 
@@ -69,19 +53,4 @@ do_ALayout_back.on("touch",function(){
 });
 
 //订阅android 系统返回键事件，3秒内连续点两次退出
-var canBack = false;
-var delayOut = mm("do_Timer");
-delayOut.delay = 3000;
-delayOut.on("tick",function(){
-	delayOut.stop();
-	canBack = false;
-})
-do_Page.on("back",function(){
-	if(canBack){
-		do_Global.exit();
-	}else{
-		do_Notification.toast("再次点击退出应用");
-		canBack = true;
-		delayOut.start();
-	}
-})
+common.systemBack(do_Page,mm("do_Timer"),do_Global,do_Notification);

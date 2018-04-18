@@ -20,18 +20,25 @@ var do_ScrollView_content = ui("do_ScrollView_content");
 var do_ALayout_body = ui("do_ALayout_body");
 var do_ALayout_upload = ui("do_ALayout_upload");
 var do_LinearLayout_img = ui('do_LinearLayout_img');
+var do_ALayout_submit = ui("do_ALayout_submit");
 
 var do_Label_5 = ui("do_Label_5");
 var do_Label_6 = ui("do_Label_6");
 var do_Label_7 = ui("do_Label_7");
 var do_Label_8 = ui("do_Label_8");
 
+var do_TextBox_1 = ui("do_TextBox_1");
+
 var do_Label_label = ui("do_Label_label");
 var do_LinearLayout_content = ui("do_LinearLayout_content");
 
-var reserve_status = 0;
-var love_status = 0;
+var common = require("common");
+var httpsData = {url:'user/uploadRequest',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
+
+
 var house_type = 1;
+var label_id = 0;
+var fileData = [];
 //类型选择
 do_ALayout_buy1.on("touch",function(){
 	house_type = 1;
@@ -56,7 +63,9 @@ do_ALayout_upload.on("touch",function(){
 		deviceone.print(data);
 		var child = do_LinearLayout_img.getChildren();
 		child.forEach(function(value, key, map) {
+			deviceone.print(key);
 			ui(value).source = data[key];
+			fileData.push({key:'file'+key,value:data[key]});
 		})
 	});
 })
@@ -69,13 +78,28 @@ do_ALayout_label.on("touch",function(){
 	pickerLabel.show("slide_b2t",200);
 });
 do_Page.on("LabelChanged",function(data){
-	do_Label_label.text=data;
+	do_Label_label.text=data.name;
+	label_id = data.index;
 });
 do_LinearLayout_content.on("touch",function(){
-	deviceone.print('ok');
 	do_Page.hideKeyboard();
 	do_Page.fire("ClickOut");
 })
+//提交
+do_ALayout_submit.on("touch",function(){
+	if(label_id == 0){
+		do_Notification.toast("请选择房源标签");
+		return false;
+	}
+	if(do_TextBox_1.text == ''){
+		do_Notification.toast("请填写需求说明");
+		return false;
+	}
+	common.sendPost(httpsData,{files:fileData,texts:[{key:"label_id",value:label_id},{key:"type",value:house_type},{key:"remark",value:do_TextBox_1.text}]},function(data) {
+		
+	},'form');
+});
+
 //点击顶部返回键
 do_ALayout_back.on("touch",function(){
 	do_App.closePage({
@@ -84,19 +108,4 @@ do_ALayout_back.on("touch",function(){
 });
 
 //订阅android 系统返回键事件，3秒内连续点两次退出
-var canBack = false;
-var delayOut = mm("do_Timer");
-delayOut.delay = 3000;
-delayOut.on("tick",function(){
-	delayOut.stop();
-	canBack = false;
-})
-do_Page.on("back",function(){
-	if(canBack){
-		do_Global.exit();
-	}else{
-		do_Notification.toast("再次点击退出应用");
-		canBack = true;
-		delayOut.start();
-	}
-})
+common.systemBack(do_Page,mm("do_Timer"),do_Global,do_Notification);

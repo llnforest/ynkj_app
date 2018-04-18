@@ -68,7 +68,6 @@
 							},
 							{
 								"margin":"10,0,0,0",
-								"type":"do_Label",
 								"maxHeight":"76",
 								"x":"30",
 								"width":"690",
@@ -76,7 +75,8 @@
 								"maxLines":"2",
 								"fontSize":"28",
 								"id":"do_Label_3",
-								"text":"未注册的手机号将自动创建链家账号，经纪人不会看到您的手机号",
+								"text":"未注册的手机号将自动创建翼鸟宜居账号，经纪人不会看到您的手机号",
+								"type":"do_Label",
 								"fontColor":"8A8A8AFF",
 								"height":"100"
 							},
@@ -196,7 +196,7 @@
 								"y":"754",
 								"fontSize":"25",
 								"id":"do_Label_6",
-								"text":"注册/登录即代表同意《翼鸟科技用户协议》",
+								"text":"注册/登录即代表同意《翼鸟宜居用户协议》",
 								"type":"do_Label",
 								"fontColor":"FF0000FF"
 							}

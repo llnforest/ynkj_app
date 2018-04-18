@@ -67,3 +67,21 @@ module.exports.sendPost = function(obj,body,sucFuc,method){
 	});
 	
 }
+
+module.exports.systemBack = function(doPage,backDelay,doGlobal,notify){
+	var canBack = false;
+	backDelay.delay = 3000;
+	backDelay.on("tick",function(){
+		backDelay.stop();
+		canBack = false;
+	})
+	doPage.on("back",function(){
+		if(canBack){
+			doGlobal.exit();
+		}else{
+			notify.toast("再次点击退出应用");
+			canBack = true;
+			backDelay.start();
+		}
+	})
+}

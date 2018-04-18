@@ -44,7 +44,6 @@ do_ALayout_root.on("touch", function(){
 do_Page.on("ShowSelect", function(data){
 	if (listData != data){
 		listData= data;
-		deviceone.print("showSelect");
 		do_GridView_search.bindItems(listData);
 	}
 	

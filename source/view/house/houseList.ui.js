@@ -24,49 +24,50 @@ var do_ImageView_jiage = ui("do_ImageView_jiage");
 var do_Label_fangxing = ui("do_Label_fangxing");
 var do_ALayout_fangxing = ui("do_ALayout_fangxing");
 var do_ImageView_fangxing = ui("do_ImageView_fangxing");
+var do_Label_head = ui("do_Label_head");
 
+var page = 0;
 var quyu = 0,fangxing=0,jiage=0;
-
-do_ALayout_house.add("selectTemplate", "source://view/house/selectTemplate.ui", 0, 0);
-//var selectTemplate = ui("selectTemplate");
-
-var quyuJson = [
-               {id:1,term:"全部区域",selected:1},
-		       {id:2,term:"蜀山区",selected:0},
-		       {id:3,term:"庐阳区",selected:0},
-		       {id:4,term:"包河区",selected:0},
-		       {id:5,term:"瑶海区",selected:0},
-		];
-var jiageJson = [
-                {id:0,term:"全部价格",selected:1},
-                {id:1,term:"5000以下",selected:0},
-                {id:2,term:"5000-7000",selected:0},
-                {id:3,term:"7000-10000",selected:0},
-                {id:4,term:"10000-15000",selected:0},
-                {id:4,term:"15000以上",selected:0},
-         ];
-var fangxingJson = [
-                {id:0,term:"房型",selected:1},
-                {id:1,term:"三室一厅",selected:0},
-                {id:2,term:"两室一厅",selected:0},
-                {id:3,term:"一室一厅",selected:0},
-                {id:4,term:"四室两厅",selected:0},
-         ];
-
+var param = do_Page.getData();
+var common = require("common");
+var httpsData = {url:'house/houseList',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
 var fangxingData = mm("do_ListData");
-fangxingData.addData(fangxingJson);
 var jiageData = mm("do_ListData");
-jiageData.addData(jiageJson);
 var quyuData = mm("do_ListData");
-quyuData.addData(quyuJson);
+var houseData = mm("do_ListData");
+var jiageJson = [];
+var quyuJson = [];
+var fangxingJson = [];
+do_ALayout_house.add("selectTemplate", "source://view/house/selectTemplate.ui", 0, 0);
+
+common.sendPost(httpsData,{label_id:param.label_id,page:page},function(data) {
+	do_Label_head.text = data.label;
+	//房型、区域、价格信息绑定
+	data.fangxing.unshift({id:0,term:'全部房型',selected:1})
+	fangxingJson = data.fangxing;
+	fangxingData.addData(data.fangxing);
+	data.jiage.unshift({id:0,term:'全部价格',selected:1})
+	jiageJson = data.jiage;
+	jiageData.addData(data.jiage);
+	data.quyu.unshift({id:0,term:'全部区域',selected:1})
+	quyuJson = data.quyu;
+	quyuData.addData(data.quyu);
+	//房型列表
+	houseData.addData(data.house);
+	do_ListView_house.refreshItems();
+	if(data.house.length < 10) do_ListView_house.isFooterVisible = false;
+});
 
 //在当前页面下订阅SelectOneTab的事件
 do_Page.on("SelectOneTab", function(data){
-	deviceone.print("selectOneTab");
+	var old_quyu = quyu;
+	var old_fangxing = fangxing;
+	var old_jiage = jiage;
 	if(do_ALayout_quyu.tag == 1){
 		for(var i=0; i<quyuJson.length;i++){
 			if (quyuJson[i].term == data.name){
 				quyu = quyuJson[i].id;
+				is_refresh = 1;
 				quyuData.updateOne(i, 
 					{
 						id : quyuJson[i].id,
@@ -76,7 +77,6 @@ do_Page.on("SelectOneTab", function(data){
 				);
 			}
 			else{
-				deviceone.print(JSON.stringify(quyuJson[i]));
 				quyuData.updateOne(i, 
 					{
 						id : quyuJson[i].id,
@@ -86,11 +86,11 @@ do_Page.on("SelectOneTab", function(data){
 				);
 			}
 		}
-		do_Page.fire("RefreshSelect",quyuData);
 	}else if(do_ALayout_jiage.tag == 1){
 		for(var i=0; i<jiageJson.length;i++){
 			if (jiageJson[i].term == data.name){
-				jiage = jiageJson[i].id
+				jiage = jiageJson[i].id;
+				is_refresh = 1;
 				jiageData.updateOne(i, 
 					{
 						id : jiageJson[i].id,
@@ -109,11 +109,11 @@ do_Page.on("SelectOneTab", function(data){
 				);
 			}
 		}
-		do_Page.fire("RefreshSelect",jiageData);
 	}else{
 		for(var i=0; i<fangxingJson.length;i++){
 			if (fangxingJson[i].term == data.name){
 				fangxing = fangxingJson[i].id;
+				is_refresh = 1;
 				fangxingData.updateOne(i, 
 					{
 						id : fangxingJson[i].id,
@@ -132,7 +132,21 @@ do_Page.on("SelectOneTab", function(data){
 				);
 			}
 		}
-		do_Page.fire("RefreshSelect");
+	}
+	do_Page.fire("RefreshSelect");
+	//重新筛选
+	if(old_quyu != quyu || old_fangxing != fangxing || old_jiage != jiage){
+		page = 0;
+		deviceone.print(JSON.stringify({label_id:param.label_id,page:page,quyu:quyu,fangxing:fangxing,jiage:jiage}));
+		do_ListView_house.isFooterVisible = true;
+		common.sendPost({url:'house/houseList',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")},{label_id:param.label_id,page:page,quyu:quyu,fangxing:fangxing,jiage:jiage},function(data) {
+			//房型列表
+			houseData.removeAll();
+			do_ListView_house.rebound();
+			houseData.addData(data.house);
+			do_ListView_house.refreshItems();
+			if(data.house.length < 10) do_ListView_house.isFooterVisible = false;
+		});
 	}
 });
 
@@ -143,10 +157,14 @@ do_ListView_house.on("push",function(data){
 	}
 })
 function getNextPage(){
-	deviceone.print("push");
-	do_ListView_house.rebound();
-	houseData.addData(jsonHouse);
-	do_ListView_house.refreshItems();
+	page ++;
+	common.sendPost({url:'house/houseList',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")},{label_id:param.label_id,page:page,quyu:quyu,fangxing:fangxing,jiage:jiage},function(data) {
+		//房型列表
+		do_ListView_house.rebound();
+		houseData.addData(data.house);
+		do_ListView_house.refreshItems();
+		if(data.house.length < 10) do_ListView_house.isFooterVisible = false;
+	});
 }
 
 //消除导航状态
@@ -158,7 +176,6 @@ do_Page.on("RemoveNavStatus",function(){
 
 //顶部点击触发事件
 do_ALayout_quyu.on("touch",function(){
-	deviceone.print("quyu");
 	do_ALayout_quyu.tag = 1;
 	do_ALayout_jiage.tag = 0;
 	do_ALayout_fangxing.tag = 0;
@@ -171,7 +188,6 @@ do_ALayout_quyu.on("touch",function(){
 	do_Page.fire("ShowSelect",quyuData)
 });
 do_ALayout_jiage.on("touch",function(){
-	deviceone.print("jiage");
 	do_ALayout_quyu.tag = 0;
 	do_ALayout_jiage.tag = 1;
 	do_ALayout_fangxing.tag = 0;
@@ -184,7 +200,6 @@ do_ALayout_jiage.on("touch",function(){
 	do_Page.fire("ShowSelect",jiageData)
 });
 do_ALayout_fangxing.on("touch",function(){
-	deviceone.print("fangxing");
 	do_ALayout_quyu.tag = 0;
 	do_ALayout_jiage.tag = 0;
 	do_ALayout_fangxing.tag = 1;
@@ -197,61 +212,6 @@ do_ALayout_fangxing.on("touch",function(){
 	do_Page.fire("ShowSelect",fangxingData)
 });
 
-//列表
-var houseData = mm("do_ListData");
-var jsonHouse = [
-    {
-	  	id:1,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"免税",id:1,color:"008a00ff"},{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-	  	id:2,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"免税",id:1,color:"008a00ff"},{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-	  	id:3,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-	  	id:4,
-	  	desc:"两室一厅/100平/南北通透/铜冠花园",
-	  	goodness:[{name:"免税",id:1,color:"008a00ff"},{name:"地铁口",id:2,color:"FF0000FF"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	},
-	{
-		id:5,
-		desc:"两室一厅/100平/南北通透/铜冠花园",
-		goodness:[{name:"免税",id:1,color:"008a00ff"}],
-	  	price:"150万",
-	  	avg_price:"1500元/平米",
-	  	url:"source://image/demo_house.png",
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	  	href:"source://view/index/bannerTemplate.ui"
-	}
-];
-houseData.addData(jsonHouse);
 
 //页面加载完成渲染
 do_Page.on("loaded",function(){
@@ -266,19 +226,4 @@ do_ALayout_back.on("touch",function(){
 });
 
 //订阅android 系统返回键事件，3秒内连续点两次退出
-var canBack = false;
-var delayOut = mm("do_Timer");
-delayOut.delay = 3000;
-delayOut.on("tick",function(){
-	delayOut.stop();
-	canBack = false;
-})
-do_Page.on("back",function(){
-	if(canBack){
-		do_Global.exit();
-	}else{
-		do_Notification.toast("再次点击退出应用");
-		canBack = true;
-		delayOut.start();
-	}
-})
+common.systemBack(do_Page,mm("do_Timer"),do_Global,do_Notification);

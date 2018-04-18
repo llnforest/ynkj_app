@@ -10,20 +10,27 @@ var do_Album = sm("do_Album");
 var do_Notification = sm("do_Notification");
 
 var common = require("common");
-var httpsData = {url:'user/updateHeadUrl',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
+var httpsData = {url:'user/index',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
 
 var do_ALayout_contact = ui("do_ALayout_contact");
 var do_ALayout_request = ui("do_ALayout_request");
 var do_LinearLayout_top = ui("do_LinearLayout_top")
 var headUrl = ui("do_ImageView_head");
+var do_Label_5 = ui("do_Label_5");
+var do_Label_2 = ui("do_Label_2");
+
+common.sendPost(httpsData,{},function(data) {
+	do_Label_5.text = data.service;
+	do_Label_2.text = data.user.phone;
+	if(data.user.head_url) headUrl.source = data.user.head_url;
+	else headUrl.source = "source://image/head_url.png";
+});
+
 //点击头像
 do_LinearLayout_top.on("touch",function(){
 	do_Album.select({maxCount:1,width:200,height:200,quantity:50,iscut:false,type:0},function(data,e){
 		headUrl.source = data[0];
-		common.sendPost(httpsData,data[0],function(data) {
-			
-			
-			
+		common.sendPost({url:'user/updateHeadUrl',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")},data[0],function(data) {
 			
 		},'upload');
 	});
@@ -40,5 +47,5 @@ do_ALayout_request.on("touch",function(){
 
 //联系客服
 do_ALayout_contact.on("touch",function(){
-	do_External.openDial("13585788049");
+	do_External.openDial(do_Label_5.text);
 })

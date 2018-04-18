@@ -17,7 +17,7 @@
 						"y":"40",
 						"fontSize":"35",
 						"id":"do_Label_head",
-						"text":"商品房",
+						"text":"房源详情",
 						"type":"do_Label",
 						"fontColor":"FFFFFFFF",
 						"height":"70"
@@ -68,7 +68,7 @@
 										"y":"20",
 										"fontSize":"35",
 										"id":"do_Label_20",
-										"text":"房源介绍",
+										"text":"房源详情",
 										"type":"do_Label",
 										"fontStyle":"bold",
 										"fontColor":"008C00FF"
@@ -97,7 +97,6 @@
 										"maxLines":"-1",
 										"fontSize":"28",
 										"id":"do_Label_39",
-										"text":"这个房子非常的号，很多少的看法就爱看的牢房内打飞机卡卡迪士尼非农的积分卡萨诺佛年迪士尼爱的疯狂就安东尼覅都是积分抵阿凡达看你发的司法",
 										"type":"do_Label",
 										"fontColor":"8A8A8AFF",
 										"height":"-1"
@@ -126,7 +125,6 @@
 										"maxLines":"-1",
 										"fontSize":"28",
 										"id":"do_Label_41",
-										"text":"这个房子非常的号，很多少的看法就爱看的牢房内打飞机卡卡迪士尼非农的积分卡萨诺佛年迪士尼爱的疯狂就安东尼覅都是积分抵阿凡达看你发的司法",
 										"type":"do_Label",
 										"fontColor":"8A8A8AFF",
 										"height":"-1"
@@ -155,7 +153,6 @@
 										"maxLines":"-1",
 										"fontSize":"28",
 										"id":"do_Label_43",
-										"text":"这个房子非常的号，很多少的看法就爱看的牢房内打飞机卡卡迪士尼非农的积分卡萨诺佛年迪士尼爱的疯狂就安东尼覅都是积分抵阿凡达看你发的司法",
 										"type":"do_Label",
 										"fontColor":"8A8A8AFF",
 										"height":"-1"
@@ -184,7 +181,6 @@
 										"maxLines":"-1",
 										"fontSize":"28",
 										"id":"do_Label_45",
-										"text":"     这个房子非常的号，很多少的看法就爱看的牢房内打飞机卡卡迪士尼非农的积分卡萨诺佛年迪士尼爱的疯狂就安东尼覅都是积分抵阿凡达看你发的司法",
 										"type":"do_Label",
 										"fontColor":"8A8A8AFF",
 										"height":"-1"

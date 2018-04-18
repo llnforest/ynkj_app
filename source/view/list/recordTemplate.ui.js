@@ -12,14 +12,19 @@ var do_ALayout_root=ui("do_ALayout_root");
 
 //绑定映射关系
 root.setMapping({
-	"do_Label_title.text":"name"
+	"do_Label_title.text":"name",
+	"do_ALayout_root.tag":"house_id",
 })
 
 //点击触发
 do_ALayout_root.on("touch",function(){
-	do_App.openPage({
-		source:"source://view/house/house.ui", 
-		animationType:"push_r2l", //动画效果：从右向左推出
-		statusBarState:"transparent",
-	});
+	id = do_ALayout_root.tag;
+	if(id){
+		do_App.openPage({
+			source:"source://view/house/house.ui", 
+			animationType:"push_r2l", //动画效果：从右向左推出
+			statusBarState:"transparent",
+			data:JSON.stringify({id:id})
+		});
+	}
 })

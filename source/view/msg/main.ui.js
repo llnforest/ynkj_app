@@ -9,9 +9,22 @@ var do_Global = sm("do_Global");
 var do_App = sm("do_App");
 var do_Page = sm("do_Page");
 
+var page = 0;
+var common = require("common");
+var httpsData = {url:'msg/index',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")};
+
+
 //声明变量
 var do_ListView_msg = ui("do_ListView_msg");
+//列表
+var msgData = mm("do_ListData");
 
+common.sendPost(httpsData,{page:page},function(data) {
+	//通知列表
+	msgData.addData(data.notice);
+	do_ListView_msg.refreshItems();
+	if(data.notice.length < 10) do_ListView_msg.isFooterVisible = false;
+});
 
 //下拉
 do_ListView_msg.on("push",function(data){
@@ -21,36 +34,16 @@ do_ListView_msg.on("push",function(data){
 })
 
 function getNextPage(){
-	deviceone.print("push");
-	do_ListView_msg.rebound();
-	msgData.addData(msgJson);
-	do_ListView_msg.refreshItems();
+	
+	common.sendPost({url:'msg/index',deviceone:deviceone,storage:sm("do_Storage"),time:mm("do_Timer"),notify:do_Notification,app:do_App,http:mm("do_Http")},{page:page},function(data) {
+		//通知列表
+		do_ListView_msg.rebound();
+		msgData.addData(data.notice);
+		do_ListView_msg.refreshItems();
+		if(data.notice.length < 10) do_ListView_msg.isFooterVisible = false;
+	});
 }
 
 
-//列表
-var msgData = mm("do_ListData");
-var msgJson = [
-    {
-	  	id:1,
-	  	title:"最新消息铜冠花园大四房，只要150万",
-	},
-	{
-	  	id:2,
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	},
-	{
-	  	id:3,
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	},
-	{
-	  	id:4,
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	},
-	{
-		id:5,
-	  	title:"铜冠花园大四房，只要150万，急售！急售！急售！急售！急售！急售！急售！急售！",
-	}
-];
-msgData.addData(msgJson);
+
 do_ListView_msg.bindItems(msgData);

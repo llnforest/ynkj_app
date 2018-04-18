@@ -17,7 +17,7 @@
 						"y":"40",
 						"fontSize":"35",
 						"id":"do_Label_head",
-						"text":"商品房",
+						"text":"房源信息",
 						"type":"do_Label",
 						"fontColor":"FFFFFFFF",
 						"height":"70"
@@ -188,7 +188,6 @@
 												"y":"40",
 												"fontSize":"35",
 												"id":"do_Label_23",
-												"text":"三室一厅",
 												"type":"do_Label",
 												"fontColor":"FF0000FF",
 												"height":"40"

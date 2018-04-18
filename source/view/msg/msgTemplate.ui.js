@@ -18,12 +18,13 @@ root.setMapping({
 
 //点击触发
 do_ALayout_root.on("touch",function(){
-	var url = do_ALayout_root.tag;
-	if(url){
+	var id = do_ALayout_root.tag;
+	if(id){
 		do_App.openPage({
 			source:"source://view/msg/msgDetail.ui", 
 			animationType:"push_r2l", //动画效果：从右向左推出
 			statusBarState:"transparent",
+			data:JSON.stringify({id:id})
 		});
 	}
 })

@@ -17,7 +17,7 @@
 						"y":"40",
 						"fontSize":"35",
 						"id":"do_Label_head",
-						"text":"商品房",
+						"text":"消息详情",
 						"type":"do_Label",
 						"fontColor":"FFFFFFFF",
 						"height":"70"
@@ -71,7 +71,6 @@
 										"y":"50",
 										"fontSize":"35",
 										"id":"do_Label_title",
-										"text":"降价促销啦，降价大促销",
 										"type":"do_Label",
 										"fontStyle":"bold",
 										"height":"-1"
@@ -80,7 +79,6 @@
 										"width":"710",
 										"y":"89",
 										"id":"do_ImageView_banner",
-										"source":"source://image/banner2.jpg",
 										"type":"do_ImageView",
 										"cacheType":"temporary",
 										"height":"-1"
@@ -93,7 +91,6 @@
 										"maxLines":"-1",
 										"fontSize":"28",
 										"id":"do_Label_content",
-										"text":"这个房子非常的号，很多少的看法就爱看的牢房内打飞机卡卡迪士尼非农的积分卡萨诺佛年迪士尼爱的疯狂就安东尼覅都是积分抵阿凡达看你发的司这个房子非常的号，很多少的看法就爱看的牢房内打飞机卡卡迪士尼非农的积分卡萨诺佛年迪士尼爱的疯狂就安东尼覅都是积分抵阿凡达看你发的司法法",
 										"type":"do_Label",
 										"fontColor":"8A8A8AFF",
 										"height":"-1"
@@ -122,7 +119,6 @@
 										"width":"710",
 										"y":"349",
 										"id":"do_ImageView_huxing",
-										"source":"source://image/banner2.jpg",
 										"type":"do_ImageView",
 										"height":"-1"
 									}
@@ -151,97 +147,26 @@
 				"type":"do_ALayout",
 				"views":[
 					{
-						"width":"140",
-						"id":"do_ALayout_love",
+						"border":"00000000,0,[4,4,4,4]",
+						"bgColor":"008C00FF",
+						"width":"600",
+						"x":"75",
+						"y":"10",
+						"id":"do_ALayout_phone",
 						"type":"do_ALayout",
-						"isStretch":"false",
 						"views":[
-							{
-								"x":"48",
-								"width":"44",
-								"y":"10",
-								"id":"do_ImageView_love",
-								"source":"source://image/love.png",
-								"type":"do_ImageView",
-								"height":"44"
-							},
 							{
 								"textAlign":"center",
-								"width":"140",
-								"y":"54",
-								"fontSize":"22",
-								"id":"do_Label_love",
-								"text":"关注",
+								"width":"600",
+								"fontSize":"28",
+								"id":"do_Label_3",
+								"text":"咨询经纪人",
 								"type":"do_Label",
-								"fontColor":"8A8A8AFF",
-								"height":"26"
-							}
-						],
-						"height":"90"
-					},
-					{
-						"x":"140",
-						"width":"305",
-						"id":"do_ALayout_b2",
-						"type":"do_ALayout",
-						"isStretch":"false",
-						"views":[
-							{
-								"border":"00000000,0,[4,4,4,4]",
-								"bgColor":"FF0000FF",
-								"x":"25",
-								"width":"255",
-								"y":"10",
-								"id":"do_ALayout_reserve",
-								"type":"do_ALayout",
-								"views":[
-									{
-										"textAlign":"center",
-										"width":"255",
-										"fontSize":"28",
-										"id":"do_Label_2",
-										"text":"预约看房",
-										"type":"do_Label",
-										"fontColor":"FFFFFFFF",
-										"height":"70"
-									}
-								],
+								"fontColor":"FFFFFFFF",
 								"height":"70"
 							}
 						],
-						"height":"90"
-					},
-					{
-						"x":"445",
-						"width":"305",
-						"id":"do_ALayout_b3",
-						"type":"do_ALayout",
-						"isStretch":"false",
-						"views":[
-							{
-								"border":"00000000,0,[4,4,4,4]",
-								"bgColor":"008C00FF",
-								"x":"25",
-								"width":"255",
-								"y":"10",
-								"id":"do_ALayout_phone",
-								"type":"do_ALayout",
-								"views":[
-									{
-										"textAlign":"center",
-										"width":"255",
-										"fontSize":"28",
-										"id":"do_Label_3",
-										"text":"咨询经纪人",
-										"type":"do_Label",
-										"fontColor":"FFFFFFFF",
-										"height":"70"
-									}
-								],
-								"height":"70"
-							}
-						],
-						"height":"90"
+						"height":"70"
 					}
 				],
 				"height":"90"
